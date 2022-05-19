@@ -9,32 +9,36 @@ namespace PBL3_Tutor.Models
 {
     public class DataSQL
     {
-        public string s = @"Data Source=HELLO;Initial Catalog=PBL3_Tutor;Integrated Security=True";
-        SqlConnection cnn=new SqlConnection();
-        string query = "select * from SV";
-        SqlCommand cmd=new SqlCommand();
-        SqlDataReader r;
-        // DataTable dtacount=new DataTable();
-        DataTable dtstudent=new DataTable();
-        DataTable dttutor = new DataTable();
-        public void readsql() 
+        static ReadSQL rs = new ReadSQL(@"Data Source=HELLO;Initial Catalog=PBL3_Tutor;Integrated Security=True");
+        DataTable student = rs.GetRecords("select * from student");
+        DataTable account = rs.GetRecords("select * from account");
+        DataTable tutor = rs.GetRecords("select * from tutor");
+        public DataTable displayinfor(string actor)
         {
-            cnn = new SqlConnection(s);
-            cmd=new SqlCommand(query,cnn);
-            cnn.Open();
-            dtstudent.Columns.AddRange(new DataColumn[]
+            if (actor == "student")
             {
-                new DataColumn{ColumnName="Name",DataType=typeof(string) },
-                new DataColumn {ColumnName="Age",DataType=typeof(int) },
-                new DataColumn {ColumnName="Number Phone",DataType = typeof(string) },
-                new DataColumn {ColumnName ="Gender", DataType = typeof(bool) },
-                new DataColumn {ColumnName="Address",DataType=typeof(string)},
-                new DataColumn {ColumnName="Class" ,DataType=typeof(string) },
-                new DataColumn {ColumnName=""}
-
-            
-
-            });
+                return rs.GetRecords("SELECT name,birthday,age,numberphone,gender,address,subject,class,luong FROM student");
+            } 
+            else
+            {
+                return rs.GetRecords("SELECT name,age,numberphone,gender,address,subject,class,experience FROM student");
+            }       
+        }
+        public void insert(string actor,DataTable dt)
+        {
+            if (actor == "student")
+            {
+                student.Rows.Add(dt);
+                //rs.ExcuteDB("insert into student(id,name,birthday,age,numberphone,gender,address,subject,class,luong) values "+dt.Rows.ToString());
+            }
+            if (actor == "account")
+            {
+                account.Rows.Add(dt);
+            }    
+            else
+            {
+                tutor.Rows.Add(dt);
+            }    
         }
     }
 }

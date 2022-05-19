@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/bootstrap.bundle.js"></script>
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <style>
         body {
@@ -45,20 +44,18 @@
                                     <li><a class="dropdown-item" href="@Url.Action("TutorBlog", "Blog")">Blog gia sư</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("StudentBlog", "Blog")">Blog học sinh</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("ParentBlog", "Blog")">Blog phụ huynh</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("ClassList","Home")">Danh sách lớp</a>
+                                <a class="nav-link" href="@Url.Action("Index","Class")">Danh sách lớp</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("Contact","Home")">Liên hệ</a>
                             </li>
                         </ul>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a class="btn btn-success" href="#" role="button">Dành cho gia sư</a>
-                            <a class="btn btn-primary" href="#" role="button">Đăng ký thuê gia sư</a>
+                            <a class="btn btn-success" href="@Url.Action("Index", "Class")" role="button">Dành cho gia sư</a>
+                            <a class="btn btn-primary" href="@Url.Action("Register", "Home")" role="button">Đăng ký thuê gia sư</a>
                         </div>
                     </div>
                 </div>

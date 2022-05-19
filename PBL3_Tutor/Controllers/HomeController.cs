@@ -38,5 +38,11 @@ namespace PBL3_Tutor.Controllers
 
             return View();
         }
+        public ActionResult Register()
+        {
+            ViewBag.Message = "Register form.";
+
+            return View();
+        }
     }
 }

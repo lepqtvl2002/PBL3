@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PBL3_Tutor.Models.Class>
+
+@{
+    ViewBag.Title = "ClassFree";
+}
+
+<h2 class="text-white">Danh sách các lớp không cần nộp phí nhận lớp</h2>
+
+<div class="container bg-light">
+    <p>
+        @Html.ActionLink("Trở lại danh sách lớp", "Index")
+    </p>
+
+    <div class="row g-2">
+        @foreach (var item in Model)
+        {
+            <div class="col-3">
+                <div class="p-3 border bg-light">
+                    <p class="text-primary">
+                        Mã Lớp:
+                        ML@(item.MaLop)
+                    </p>
+                    <b>
+                        @(item.Student.Subject.TenMonHoc)
+                        @(item.Student.Lop)
+                    </b>
+                    <br />
+                    <b>
+                        Đ/c:
+                        @(item.Student.DiaChi)
+                    </b>
+                    <br />
+                    <b>
+                        $
+                        @Html.DisplayFor(modelItem => item.Student.SoTienChiTra) ₫
+                    </b>
+                    <br />
+                    <b>
+                        Yêu Cầu:
+                        @(item.Student.YeuCauTrinhDo==true?"Giảng viên":"Sinh viên")
+                        @(item.Student.YeuCauGioiTinh==true?"Nam":"Nữ")
+                    </b>
+                    <br />
+                    <b>
+                        @Html.ActionLink("Chi tiết", "More", new { id = item.MaLop })
+                    </b>
+                    <br />
+                </div>
+            </div>
+        }
+    </div>
+</div>

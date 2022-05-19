@@ -1,59 +1,59 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron bg-light">
-    <h1>TRUNG TÂM GIA SƯ PBL3</h1>
-    <p class="lead">Mang điểm 10 về với con của bạn.</p>
-    <p><a href="@Url.Action("About","Home")" class="btn btn-primary btn-lg">Tìm hiểu thêm &raquo;</a></p>
+<hr/>
+<div class="container-fluid bg-white">
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <img src="blob:https://dutudn-my.sharepoint.com/dee09c55-acc6-4fab-a751-4bd12f529ab4" alt="cu cu nhan">
+            </div>
+            <h1>TRUNG TÂM GIA SƯ PBL3</h1>
+            <p class="lead">Mang điểm 10 về với con của bạn.</p>
+            <p><a href="@Url.Action("About","Home")" class="btn btn-primary btn-lg">Tìm hiểu thêm &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+            <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
+        </div>
+    </div>
     <div>
-        <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
+        <img src="https://wallpaperaccess.com/full/343991.jpg" class="img-fluid" alt="" >
     </div>
 </div>
 
+<div class="container-fluid">
 
-<div class="row">
-    <div class="jumbotron bg-light">
-        <div class=" =row">
-            <div class="col-md-6">
-                <h2>Bạn là giáo viên, sinh viên muốn trao dồi kĩ năng giảng dạy và kiếm thêm thu nhập?</h2>
-                <p>
-                    Hãy tham gia vào đội ngũ giảng dạy của chúng tôi để tăng thêm kinh nghiệm, kiếm thêm thu nhập.
-                </p>
-                <p><a class="btn btn-primary btn-default" href="@Url.Action("Contact","Home")">Đăng ký ngay &raquo;</a></p>
-            </div>
-            <div class="col-md-6">
-                <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
-            </div>
+    <div class="row bg-light">
+        <div class="col-md-6">
+            <h2>Bạn là giáo viên, sinh viên muốn trao dồi kĩ năng giảng dạy và kiếm thêm thu nhập?</h2>
+            <p>
+                Hãy tham gia vào đội ngũ giảng dạy của chúng tôi để tăng thêm kinh nghiệm, kiếm thêm thu nhập.
+            </p>
+            <p><a class="btn btn-primary btn-default" href="@Url.Action("Contact","Home")">Đăng ký ngay &raquo;</a></p>
         </div>
-        
-    </div>
-    
-    <div class=" jumbotron bg-light">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
-            </div>
-            <div class="col-md-5">
-                <h2>Bạn là học sinh, sinh viên đang gặp khó khăn trong học tập?</h2>
-                <p>Tìm kiếm và tham gia những lớp học phù hợp, với những gia sư chất lượng đến từ trung tâm chúng tôi.</p>
-                <p><a class="btn btn-primary btn-default" href="@Url.Action("About","Home")">Vào lớp &raquo;</a></p>
-            </div>
+        <div class="col-md-6">
+            <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
+        </div>
+        <hr />
+        <div class="col-md-6">
+            <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
+        </div>
+        <div class="col-md-6">
+            <h2>Bạn là học sinh, sinh viên đang gặp khó khăn trong học tập?</h2>
+            <p>Tìm kiếm và tham gia những lớp học phù hợp, với những gia sư chất lượng đến từ trung tâm chúng tôi.</p>
+            <p><a class="btn btn-primary btn-default" href="@Url.Action("About","Home")">Vào lớp &raquo;</a></p>
+        </div>
+        <hr />
+        <div class="col-md-6">
+            <h2>Bạn là phụ huynh muốn tìm kiếm một gia sư chất lượng cho con mình?</h2>
+            <p>Còn noi nào có những gia sư chất lượng, đội ngũ tư vấn nhiệt tình, thương hiệu uy tín như trung tâm chúng tôi.</p>
+            <p><a class="btn btn-primary btn-default" href="@Url.Action("Service","Home")">Tìm hiểu dịch vụ &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+            <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
         </div>
     </div>
 
-    <div class=" jumbotron bg-light">
-        <div class="=row">
-            <div class="col-md-6">
-                <h2>Bạn là phụ huynh muốn tìm kiếm một gia sư chất lượng cho con mình?</h2>
-                <p>Còn nơi nào có những gia sư chất lượng, đội ngũ tư vấn nhiệt tình, thương hiệu uy tín như trung tâm chúng tôi.</p>
-                <p><a class="btn btn-primary btn-default" href="@Url.Action("Service","Home")">Tìm hiểu dịch vụ &raquo;</a></p>
-            </div>
-            <div class="col-md-5">
-                <img src="https://www.growgreen.edu.vn/asset/images/page/danh-cho-gia-su.jpg" alt="Dành cho gia sư">
-            </div>
-        </div>
-    </div>
 </div>
 
 <section class="section-space container">
@@ -64,7 +64,7 @@
                 <div class="col-lg-4">
                     <img src="http://2.bp.blogspot.com/-bt5Q58lne0g/VUEOEC0aZXI/AAAAAAAAASU/P4MmfK4PW5Q/s1600/kakashi_naruto_cool_anime_hd-wallpaper-405090.jpg" alt="Dành cho gia sư">
                 </div>
-                <div class="mt-4"><a href="@Url.Action("Contact", "Home")" class="btn btn-success font-weight-bold">Đến trang dành cho gia sư</a></div>
+                <div class="mt-4"><a href="@Url.Action("Index", "Class")" class="btn btn-success font-weight-bold">Đến trang dành cho gia sư</a></div>
             </div>
         </div>
     </div>
