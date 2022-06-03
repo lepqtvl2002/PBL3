@@ -1,0 +1,81 @@
+﻿@model PBL3_Tutor.Models.Registration
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Tutors/Views/Shared/_LayoutTutor.cshtml";
+}
+<h2 class="text-light">Hủy đăng ký làm gia sư</h2>
+<h3>Bạn có chắc chắn muốn hủy đăng ký làm gia sư cho lớp này?</h3>
+<div class="container center-block">
+    <hr />
+    <div>
+        <div class="col-6">
+            <div class="p-3 border bg-light">
+                <h3 class="text-primary">
+                    Mã Lớp
+                    <b class="text-success">
+                        ML@(Model.classId)
+                    </b>
+                </h3>
+                <p>
+                    <b>
+                        @(Model.Class.Student.subject)
+                        - Lớp @(Model.Class.Student.grade)
+                    </b>
+                </p>
+                <p>
+                    <b>Địa chỉ:</b>
+                    @(Model.Class.Student.address)
+                </p>
+                <p>
+                    <b>Mức thu nhập:</b>
+                    @(Model.Class.Student.paymentAmount) ₫/tháng
+                </p>
+                <p>
+                    <b> Yêu cầu:</b>
+                    @(Model.Class.Student.requirement)
+                </p>
+                <p>
+                    <b>Thời gian có thể học:</b>
+                    @(Model.Class.Student.freeTime)
+                </p>
+            </div>
+            
+            <p>
+                <b>@(Model.Class.fee == 0?"Miễn phí nhận lớp":"Phí nhận lớp: " + Model.Class.fee + "%")</b>
+                <br />
+                *Phí nhận lớp chỉ nộp 1 lần, những lần tiếp theo sẽ không mất phí
+            </p>
+        </div>
+        <div class="col-6">
+            <div class="p-3 border bg-light">
+                <h3 class="text-primary">
+                    Đặc điểm học sinh
+                </h3>
+                <p>
+                    <b>Giới tính: </b>
+                    @(Model.Class.Student.gender==true?"Nam":"Nữ")
+                </p>
+                <p>
+                    @(Model.Class.Student.academicAbility == null?"":"Học lực: " + Model.Class.Student.academicAbility)
+                </p>
+                <p>
+                    @(Model.Class.Student.school == null?"":"Đang theo học trường " + Model.Class.Student.school)
+                </p>
+                <p>
+                    @(Model.Class.Student.note == null?"":Model.Class.Student.note)
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr/>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Hủy đăng ký" class="btn btn-default btn-success" /> |
+            <a class="btn btn-primary" href="@Url.Action("Index", "Registrations")" role="button">Trở về danh sách</a>
+        </div>
+    }
+</div>

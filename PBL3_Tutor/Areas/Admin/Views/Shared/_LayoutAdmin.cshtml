@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="us-ascii">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,10 +62,13 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right pull-right">
                 <li>
-                    <a class="profile-pic" href="#">
+                    <a class="profile-pic" href="@Url.Action("Profile","Dashboard")">
                         <img src="~/Public/plugins/images/users/varun.jpg" alt="user-img"
-                             width="36" class="img-circle"><b class="hidden-xs">Steave</b>
+                             width="36" class="img-circle"><b class="hidden-xs">@Session["AdminName"]</b>
                     </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary pull-right" href="@Url.Action("Logout", "Auth")" role="button">Đăng xuất</a>
                 </li>
             </ul>
         </div>
@@ -77,28 +80,22 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse slimscrollsidebar">
             <ul class="nav" id="side-menu">
-                <li>
-                    <a href="@Url.Action("Index","Dashboard")" class="waves-effect">
+                <li style="padding: 10px 0 0;">
+                    <a href="@Url.Action("Index","Dashboard")" class="wave-effect">
                         <i class="fa fa-columns fa-fw"
-                           aria-hidden="true"></i><span class="hide-menu">Blank Page</span>
+                           aria-hidden="true"></i><span class="hide-menu">Trang chính</span>
                     </a>
                 </li>
-                <li style="padding: 10px 0 0;">
+                <li>
                     <a href="@Url.Action("Dashboard","Dashboard")" class="waves-effect">
                         <i class="fa fa-clock-o fa-fw"
-                           aria-hidden="true"></i><span class="hide-menu">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Profile","Dashboard")" class="waves-effect">
-                        <i class="fa fa-user fa-fw"
-                           aria-hidden="true"></i><span class="hide-menu">Profile</span>
+                           aria-hidden="true"></i><span class="hide-menu">Bảng điều khiển</span>
                     </a>
                 </li>
                 <li>
                     <a href="@Url.Action("Table","Dashboard")" class="waves-effect">
                         <i class="fa fa-table fa-fw"
-                           aria-hidden="true"></i><span class="hide-menu">Basic Table</span>
+                           aria-hidden="true"></i><span class="hide-menu">Thành viên hệ thống</span>
                     </a>
                 </li>
                 <li>
@@ -107,18 +104,30 @@
                            aria-hidden="true"></i><span class="hide-menu">Google Map</span>
                     </a>
                 </li>
-                <li>
-                    <a href="@Url.Action("Error_404","Dashboard")" class="waves-effect">
-                        <i class="fa fa-info-circle fa-fw"
-                           aria-hidden="true"></i><span class="hide-menu">Error 404</span>
-                    </a>
-                </li>
             </ul>
 
         </div>
     </div>
     <!-- Left navbar-header end -->
-    @RenderBody()
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title"> </h4>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="white-box">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <!-- jQuery -->
     <script src="~/Public/plugins/bower_components/jquery/dist/jquery.min.js"></script>

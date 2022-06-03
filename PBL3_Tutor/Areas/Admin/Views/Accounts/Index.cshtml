@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PBL3_Tutor.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role.rolename)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @if (item.Role.rolename == "Admin")
+            {
+                @Html.DisplayFor(modelItem => item.Admins.Where(p => p.username == item.username).FirstOrDefault().name)
+            }
+            else if (item.Role.rolename == "Nhân viên")
+            {
+                @Html.DisplayFor(modelItem => item.Staffs.Where(p => p.username == item.username).FirstOrDefault().name)
+            }
+            else if (item.Role.rolename == "Gia sư")
+            {
+                @Html.DisplayFor(modelItem => item.Tutors.Where(p => p.username == item.username).FirstOrDefault().name)
+            }
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.rolename)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.username }) |
+            @Html.ActionLink("Details", "Details", new { id = item.username }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.username })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,57 @@
+﻿@model PBL3_Tutor.Models.Class
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Class</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.classId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.classId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.studentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.studentId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @(Model.state == true?"Đã có gia sư":"Đang còn")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.classId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

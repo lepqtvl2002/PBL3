@@ -12,6 +12,13 @@
         }
     </style>
 
+    
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
     <section class="clearfix header">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -47,28 +54,22 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Class")">Danh sách lớp</a>
+                                <a class="nav-link" href="~/Tutors/Classes/Index">Danh sách lớp</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("Contact","Home")">Liên hệ</a>
                             </li>
                         </ul>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a class="btn btn-success" href="@Url.Action("Index", "Class")" role="button">Dành cho gia sư</a>
-                            <a class="btn btn-primary" href="@Url.Action("Register", "Home")" role="button">Đăng ký thuê gia sư</a>
+                            <a class="btn btn-success" href="~/Tutors/Classes/Index" role="button">Dành cho gia sư</a>
+                            <a class="btn btn-primary" href="@Url.Action("Create", "Student")" role="button">Đăng ký thuê gia sư</a>
+
                         </div>
                     </div>
                 </div>
             </nav>
         </div>
     </section>
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-
-
 
 
     <section class="clearfix maincontent">

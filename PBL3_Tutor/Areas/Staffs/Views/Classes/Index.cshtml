@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PBL3_Tutor.Models.Class>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Staffs/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Classes are Empty", "Empty")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.classId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.studentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.classId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.studentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fee)
+        </td>
+        <td>
+            @(item.state == true?"Đã có gia sư":"Đang còn")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.classId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.classId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.classId })
+        </td>
+    </tr>
+}
+
+</table>

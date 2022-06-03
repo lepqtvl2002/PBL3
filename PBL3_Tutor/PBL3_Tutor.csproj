@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -129,19 +130,45 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClassesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RegistrationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StudentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TutorsController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\ClassesController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\RegistrationsController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\StudentsController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\TutorsController.cs" />
+    <Compile Include="Areas\Staffs\StaffsAreaRegistration.cs" />
+    <Compile Include="Areas\Tutors\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Tutors\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Tutors\Controllers\ClassesController.cs" />
+    <Compile Include="Areas\Tutors\Controllers\DocumentController.cs" />
+    <Compile Include="Areas\Tutors\Controllers\RegisterAccountController.cs" />
+    <Compile Include="Areas\Tutors\Controllers\RegistrationsController.cs" />
+    <Compile Include="Areas\Tutors\Controllers\TutorAccountController.cs" />
+    <Compile Include="Areas\Tutors\TutorsAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Class.cs" />
-    <Compile Include="Models\DataSQL.cs" />
-    <Compile Include="Models\DBClassContext.cs" />
-    <Compile Include="Models\ReadSQL.cs" />
+    <Compile Include="Models\DBModelContext.cs" />
+    <Compile Include="Models\Registration.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Tutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\BlogController.cs" />
   </ItemGroup>
@@ -165,6 +192,59 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Public\dist\css\adminlte.css" />
+    <Content Include="Public\dist\css\adminlte.min.css" />
+    <Content Include="Public\dist\css\alt\adminlte.components.css" />
+    <Content Include="Public\dist\css\alt\adminlte.components.min.css" />
+    <Content Include="Public\dist\css\alt\adminlte.core.css" />
+    <Content Include="Public\dist\css\alt\adminlte.core.min.css" />
+    <Content Include="Public\dist\css\alt\adminlte.extra-components.css" />
+    <Content Include="Public\dist\css\alt\adminlte.extra-components.min.css" />
+    <Content Include="Public\dist\css\alt\adminlte.light.css" />
+    <Content Include="Public\dist\css\alt\adminlte.light.min.css" />
+    <Content Include="Public\dist\css\alt\adminlte.pages.css" />
+    <Content Include="Public\dist\css\alt\adminlte.pages.min.css" />
+    <Content Include="Public\dist\css\alt\adminlte.plugins.css" />
+    <Content Include="Public\dist\css\alt\adminlte.plugins.min.css" />
+    <Content Include="Public\dist\img\AdminLTELogo.png" />
+    <Content Include="Public\dist\img\avatar.png" />
+    <Content Include="Public\dist\img\avatar2.png" />
+    <Content Include="Public\dist\img\avatar3.png" />
+    <Content Include="Public\dist\img\avatar4.png" />
+    <Content Include="Public\dist\img\avatar5.png" />
+    <Content Include="Public\dist\img\boxed-bg.jpg" />
+    <Content Include="Public\dist\img\boxed-bg.png" />
+    <Content Include="Public\dist\img\credit\american-express.png" />
+    <Content Include="Public\dist\img\credit\cirrus.png" />
+    <Content Include="Public\dist\img\credit\mastercard.png" />
+    <Content Include="Public\dist\img\credit\paypal.png" />
+    <Content Include="Public\dist\img\credit\paypal2.png" />
+    <Content Include="Public\dist\img\credit\visa.png" />
+    <Content Include="Public\dist\img\default-150x150.png" />
+    <Content Include="Public\dist\img\icons.png" />
+    <Content Include="Public\dist\img\photo1.png" />
+    <Content Include="Public\dist\img\photo2.png" />
+    <Content Include="Public\dist\img\photo3.jpg" />
+    <Content Include="Public\dist\img\photo4.jpg" />
+    <Content Include="Public\dist\img\prod-1.jpg" />
+    <Content Include="Public\dist\img\prod-2.jpg" />
+    <Content Include="Public\dist\img\prod-3.jpg" />
+    <Content Include="Public\dist\img\prod-4.jpg" />
+    <Content Include="Public\dist\img\prod-5.jpg" />
+    <Content Include="Public\dist\img\user1-128x128.jpg" />
+    <Content Include="Public\dist\img\user2-160x160.jpg" />
+    <Content Include="Public\dist\img\user3-128x128.jpg" />
+    <Content Include="Public\dist\img\user4-128x128.jpg" />
+    <Content Include="Public\dist\img\user5-128x128.jpg" />
+    <Content Include="Public\dist\img\user6-128x128.jpg" />
+    <Content Include="Public\dist\img\user7-128x128.jpg" />
+    <Content Include="Public\dist\img\user8-128x128.jpg" />
+    <Content Include="Public\dist\js\adminlte.js" />
+    <Content Include="Public\dist\js\adminlte.min.js" />
+    <Content Include="Public\dist\js\demo.js" />
+    <Content Include="Public\dist\js\pages\dashboard.js" />
+    <Content Include="Public\dist\js\pages\dashboard2.js" />
+    <Content Include="Public\dist\js\pages\dashboard3.js" />
     <Content Include="Public\html\index.html" />
     <Content Include="Public\pixel-html\404.html" />
     <Content Include="Public\pixel-html\basic-table.html" />
@@ -227,6 +307,10 @@
     <Content Include="Public\pixel-html\less\spinners.css" />
     <Content Include="Public\pixel-html\map-google.html" />
     <Content Include="Public\pixel-html\profile.html" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="Public\plugins\bower_components\counterup\jquery.counterup.min.js" />
     <Content Include="Public\plugins\bower_components\gmaps\gmaps.js" />
     <Content Include="Public\plugins\bower_components\gmaps\gmaps.min.js" />
@@ -402,6 +486,25 @@
     <Content Include="Public\plugins\bower_components\waypoints\lib\waypoints.debug.js" />
     <Content Include="Public\plugins\bower_components\waypoints\lib\zepto.waypoints.js" />
     <Content Include="Public\plugins\bower_components\waypoints\lib\zepto.waypoints.min.js" />
+    <Content Include="Public\plugins\fontawesome-free\css\all.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\all.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\brands.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\brands.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\fontawesome.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\fontawesome.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\regular.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\regular.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\solid.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\solid.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\svg-with-js.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\svg-with-js.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\v4-shims.css" />
+    <Content Include="Public\plugins\fontawesome-free\css\v4-shims.min.css" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-brands-400.svg" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-regular-400.svg" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-solid-900.svg" />
+    <Content Include="Public\plugins\icheck-bootstrap\icheck-bootstrap.css" />
+    <Content Include="Public\plugins\icheck-bootstrap\icheck-bootstrap.min.css" />
     <Content Include="Public\plugins\images\error-bg.jpg" />
     <Content Include="Public\plugins\images\favicon.png" />
     <Content Include="Public\plugins\images\large\img1.jpg" />
@@ -419,6 +522,10 @@
     <Content Include="Public\plugins\images\users\ritesh.jpg" />
     <Content Include="Public\plugins\images\users\sonu.jpg" />
     <Content Include="Public\plugins\images\users\varun.jpg" />
+    <Content Include="Public\plugins\jquery\jquery.js" />
+    <Content Include="Public\plugins\jquery\jquery.min.js" />
+    <Content Include="Public\plugins\jquery\jquery.slim.js" />
+    <Content Include="Public\plugins\jquery\jquery.slim.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -632,7 +739,131 @@
     <Content Include="Areas\Admin\Views\Dashboard\Profile.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Table.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Error_404.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Empty.cshtml" />
+    <Content Include="Areas\Admin\Views\Classes\Register.cshtml" />
     <None Include="Areas\Admin\Views\Dashboard\Map.cshtml" />
+    <Content Include="Public\plugins\jquery\jquery.min.map" />
+    <Content Include="Public\plugins\jquery\jquery.slim.min.map" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-brands-400.eot" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-brands-400.ttf" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-brands-400.woff" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-brands-400.woff2" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-regular-400.eot" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-regular-400.ttf" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-regular-400.woff" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-regular-400.woff2" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-solid-900.eot" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-solid-900.ttf" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-solid-900.woff" />
+    <Content Include="Public\plugins\fontawesome-free\webfonts\fa-solid-900.woff2" />
+    <Content Include="Public\plugins\icheck-bootstrap\LICENSE" />
+    <Content Include="Public\dist\css\adminlte.css.map" />
+    <Content Include="Public\dist\css\adminlte.min.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.components.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.components.min.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.core.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.core.min.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.extra-components.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.extra-components.min.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.light.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.light.min.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.pages.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.pages.min.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.plugins.css.map" />
+    <Content Include="Public\dist\css\alt\adminlte.plugins.min.css.map" />
+    <Content Include="Public\dist\js\.eslintrc.json" />
+    <Content Include="Public\dist\js\adminlte.js.map" />
+    <Content Include="Public\dist\js\adminlte.min.js.map" />
+    <Content Include="Areas\Admin\Views\Students\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutors\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutors\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutors\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutors\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutors\Index.cshtml" />
+    <Content Include="Areas\Tutors\Views\web.config" />
+    <Content Include="Areas\Tutors\Views\Classes\Details.cshtml" />
+    <Content Include="Areas\Tutors\Views\Classes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Registrations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Registrations\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Registrations\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Registrations\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Registrations\Index.cshtml" />
+    <Content Include="Areas\Tutors\Views\Shared\_LayoutTutor.cshtml" />
+    <Content Include="Areas\Tutors\Views\Classes\FreeClasses.cshtml" />
+    <Content Include="Areas\Tutors\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\Index.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\TakeClass.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\Refund.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\Contract.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\FeeDebt.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\ChargeAgain.cshtml" />
+    <Content Include="Areas\Tutors\Views\Document\Explaination.cshtml" />
+    <Content Include="Areas\Staffs\Views\web.config" />
+    <Content Include="Areas\Staffs\Views\Registrations\Create.cshtml" />
+    <Content Include="Areas\Staffs\Views\Registrations\Delete.cshtml" />
+    <Content Include="Areas\Staffs\Views\Registrations\Details.cshtml" />
+    <Content Include="Areas\Staffs\Views\Registrations\Edit.cshtml" />
+    <Content Include="Areas\Staffs\Views\Registrations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Index.cshtml" />
+    <Content Include="Areas\Staffs\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Staffs\Views\Shared\_LayoutStaff.cshtml" />
+    <Content Include="Areas\Staffs\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Staffs\Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Areas\Staffs\Views\Dashboard\Profile.cshtml" />
+    <Content Include="Areas\Staffs\Views\Dashboard\Table.cshtml" />
+    <Content Include="Areas\Staffs\Views\Dashboard\Map.cshtml" />
+    <Content Include="Areas\Tutors\Views\Registrations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\Unconfirmed.cshtml" />
+    <Content Include="Areas\Admin\Views\Students\CreateClass.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\Create.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\CreateClass.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\Delete.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\Details.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\Edit.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\Index.cshtml" />
+    <Content Include="Areas\Staffs\Views\Students\Unconfirmed.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Create.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Delete.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Details.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Edit.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Index.cshtml" />
+    <Content Include="Areas\Staffs\Views\Tutors\Create.cshtml" />
+    <Content Include="Areas\Staffs\Views\Tutors\Delete.cshtml" />
+    <Content Include="Areas\Staffs\Views\Tutors\Details.cshtml" />
+    <Content Include="Areas\Staffs\Views\Tutors\Edit.cshtml" />
+    <Content Include="Areas\Staffs\Views\Tutors\Index.cshtml" />
+    <Content Include="Areas\Tutors\Views\Registrations\Details.cshtml" />
+    <Content Include="Areas\Tutors\Views\Registrations\Delete.cshtml" />
+    <Content Include="Areas\Tutors\Views\TutorAccount\Create.cshtml" />
+    <Content Include="Areas\Tutors\Views\RegisterAccount\Create.cshtml" />
+    <Content Include="Areas\Tutors\Views\TutorAccount\Edit.cshtml" />
+    <Content Include="Areas\Tutors\Views\TutorAccount\ChangeThePassword.cshtml" />
+    <Content Include="Areas\Tutors\Views\TutorAccount\Index.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Empty.cshtml" />
+    <Content Include="Areas\Staffs\Views\Classes\Register.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -644,7 +875,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\img\cu_cu_nhan01.jpg" />
+    <Content Include="Public\plugins\images\users\cu_cu_nhan01.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -665,14 +896,14 @@
     <Content Include="Views\Blog\StudentBlog.cshtml" />
     <Content Include="Views\Blog\ParentBlog.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Class\Index.cshtml" />
-    <Content Include="Views\Class\More.cshtml" />
-    <Content Include="Views\Class\ClassFree.cshtml" />
-    <Content Include="Views\Class\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Staffs\Data\" />
+    <Folder Include="Areas\Staffs\Views\Base\" />
+    <Folder Include="Areas\Tutors\Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -712,7 +943,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

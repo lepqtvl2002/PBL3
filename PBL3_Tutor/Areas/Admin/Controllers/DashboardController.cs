@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PBL3_Tutor.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +7,9 @@ using System.Web.Mvc;
 
 namespace PBL3_Tutor.Areas.Admin.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
+        DBModelContext db = new DBModelContext();
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
@@ -23,7 +25,8 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         }
         public ActionResult Table()
         {
-            return View();
+            var listAccount = db.Accounts.Where(p => p.Role.rolename == "Admin" || p.Role.rolename == "Nhân viên").ToList();
+            return View(listAccount);
         }
         public ActionResult Map()
         {

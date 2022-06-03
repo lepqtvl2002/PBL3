@@ -1,0 +1,124 @@
+﻿@model PBL3_Tutor.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Staffs/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @(Model.gender == true?"Nam":Model.gender==false?"Nữ":"Không rõ")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phonenumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.academicAbility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.academicAbility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.school)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.school)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.requirement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.requirement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.freeTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.freeTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paymentAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paymentAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isConfirm)
+        </dt>
+
+        <dd>
+            @(Model.isConfirm == true?"Đã tạo lớp":"Chưa tạo lớp")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.studentId }) |
+    @Html.ActionLink("Back to List", "Index") | 
+    @Html.ActionLink("Create Class", "CreateClass", new { id = Model.studentId})
+</p>

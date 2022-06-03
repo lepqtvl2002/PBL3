@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PBL3_Tutor.Models.Registration>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Tutors/Views/Shared/_LayoutTutor.cshtml";
+}
+
+<div class="container  bg-light">
+    <div class="card text-center">
+        <div class="card-header">
+            <h2 class="card-title">Danh sách các lớp đã đăng ký nhận làm gia sư</h2>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Class.classId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.state)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Class.classId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.state)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="~/Tutors/Classes/Details/@item.classId" role="button">Thông tin lớp</a>
+                            <a class="btn btn-success" href="@Url.Action("Details", "Registrations", new { classId = item.classId })" role="button">Chi tiết</a>
+                            <a class="btn btn-danger" href="@Url.Action("Delete","Registrations", new { classId = item.classId })" role="button">Hủy đăng ký</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        <div class="card-footer">
+            <h5>
+                Hãy chuẩn bị cho mình một hồ sơ thật tốt để có cơ hội nhận được lớp ưng ý và có một thu nhập tốt nhé!
+            </h5>
+            <a>
+                Nếu bạn được chọn làm gia sư, chúng tối sẽ liên lạc tới bạn một cách nhanh nhất. 
+            </a>
+            <a>
+                Nếu bạn bị từ chối, đừng buồn, chúng tôi còn nhiều lớp phù hợp với bạn, hãy tham gia ngay! 
+            </a>
+            @Html.ActionLink(">>>Đi tới danh sách lớp","Index","Classes")
+        </div>
+    </div>
+</div>
+

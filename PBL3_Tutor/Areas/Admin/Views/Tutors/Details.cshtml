@@ -1,0 +1,131 @@
+﻿@model PBL3_Tutor.Models.Tutor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tutor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @(Model.gender == true?"Nam":Model.gender==false?"Nữ":"Không rõ")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phonenumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phonenumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.yearOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.yearOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.university)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.university)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.experience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.experience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.avata)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.avata)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tutorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

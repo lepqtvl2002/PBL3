@@ -4,31 +4,24 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 <!-- Page Content -->
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row bg-title">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">Blank Page </h4>
-            </div>
-            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank"
-                   class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">
-                    Upgrade
-                    to Pro
-                </a>
-                <ol class="breadcrumb">
-                    <li><a href="#">Dashboard</a></li>
-                    <li class="active">Blank Page</li>
-                </ol>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="white-box">
-                    <h3 class="box-title">Blank page</h3>
-                </div>
-            </div>
-        </div>
-    </div>
+<h3 class="box-title">Trang chủ</h3>
+<div>
+    <a class="btn btn-primary" href="@Url.Action("Index", "Students")" role="button">Xem danh sách thuê mới gia sư</a>
 </div>
+<div>
+    <a class="btn btn-info" href="@Url.Action("Index", "Registrations")" role="button">Xem danh sách đăng kí lớp</a>
+</div>
+<div>
+    <a class="btn btn-warning" href="@Url.Action("Index", "Accounts")" role="button">Xem danh sách tài khoản</a>
+</div>
+<div>
+    <a class="btn btn-danger" href="@Url.Action("Index", "Tutors")" role="button">Xem danh sách gia sư</a>
+</div>
+<div>
+    <a class="btn btn-success" href="@Url.Action("Index", "Classes")" role="button">Xem danh sách lớp</a>
+</div>
+<div>
+    <a class="btn btn-instagram" href="@Url.Action("Index", "Staffs")" role="button">Quản lý nhân viên</a>
+</div>
+
+

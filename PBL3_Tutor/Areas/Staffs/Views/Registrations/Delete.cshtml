@@ -1,0 +1,49 @@
+﻿@model PBL3_Tutor.Models.Registration
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Staffs/Views/Shared/_LayoutStaff.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Registration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Class.classId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class.classId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tutor.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tutor.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

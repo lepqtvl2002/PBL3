@@ -15,6 +15,12 @@ namespace PBL3_Tutor.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "Admin_login",
+                "Admin/login",
+                new { Controller = "Auth", action = "Login", id = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { Controller="Dashboard", action = "Index", id = UrlParameter.Optional }

@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            background-image: url("https://jooinn.com/images/ocean-1.jpg");
+        }
+    </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <section class="clearfix header">
+                
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <span class="logo-img">
+                                <span class="img-circle">
+                                    <img src="https://www.growgreen.edu.vn/asset/images/growgreen-logo.jpg" width="50" height="50" alt="Gia sư GrowGreen">
+                                </span>
+                            </span>
+                            <a class="navbar-brand" href="@Url.Action("Index","Document")">GIA SƯ PBL3</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="~/">Trang chủ</a>
+                                    </li>
+                                </ul>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    @if (Session["TutorName"].ToString() != "")
+                                    {
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                                </svg>
+                                                @Session["TutorName"]
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item" href="#">Mã gia sư: @Session["TutorId"]</a></li>
+                                                <li><a class="dropdown-item" href="@Url.Action("ChangeThePassword","TutorAccount", new {id = Session["TutorId"] })">Đổi mật khẩu</a></li>
+                                                <li><a class="dropdown-item" href="#">Thông báo</a></li>
+                                            </ul>
+                                        </div>
+                                        <a class="btn btn-success" href="@Url.Action("Edit", "TutorAccount", new { id = Session["TutorId"] })" role="button">Quản lí tài khoản</a>
+                                        <a class="btn btn-primary" href="@Url.Action("Logout", "Auth")" role="button">Đăng xuất</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-success" href="~/Tutors/login" role="button">Đăng nhập</a>
+                                        <a class="btn btn-primary" href="@Url.Action("Create", "RegisterAccount")" role="button">Đăng ký tài khoản</a>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <ul class="nav bg-light">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Document")">Tổng quan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Classes")">Danh sách lớp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("TakeClass","Document")">Cách thức nhận lớp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Refund","Document")">Chính sách hoàn phí</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Contract","Document")">Hợp đồng mẫu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index","Registrations")">Danh sách lớp bạn đã đăng ký nhận</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tài liệu khác
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("TutorBlog", "Blog")">Tạo note nhận lớp</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("FeeDebt", "Document")">Chính sách nợ phí</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("ChargeAgain", "Document")">Tính lại phí</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Explaination", "Document")">Giải thích về không phù hợp</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+    </section>
+
+
+
+    <section class="clearfix maincontent">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </section>
+
+
+    <section class="clearfix footer bg-light">
+
+        <footer id="footer">
+            <div class="container py-4">
+                <a href="#" onclick="scroll_to_top('fast');return false" class="text-underline">Trở lại phía trên đầu</a>
+            </div>
+
+            <div class="footer-primary-section pt-4 pb-3">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-4 mt-2 mt-lg-0">
+                            <div class="h5 mb-3">Liên hệ với chúng tôi</div>
+                            <div class="my-contact my-mt-1">
+                                <p><span class="icon icon-map-marker"></span> Số 54 Nguyễn Lương Bằng, Hòa Khánh Bắc, Liên Chiểu, Đà Nẵng</p>
+                                <p><span class="icon icon-phone"></span> <a href="tel:+84902123456">0902-1234-56</a></p>
+                                <p><span class="icon icon-envelope-o"></span> contact@nhom7pbl3.edu.vn</p>
+                            </div>
+                        </div>
+
+                        <div class="connect-us col-lg-3 mt-3 mt-lg-0">
+                            <div class="h5 mb-3">Về chúng tôi</div>
+                            <ul class="list-unstyled">
+                                <li class="mb-1"><a href="@Url.Action("About", "Home")">Giới thiệu</a></li>
+                                <li class="mb-1"><a href="@Url.Action("Contact", "Home")">Liên hệ</a></li>
+                                <li class="mb-1"><a href="@Url.Action("About", "Home")">Chính sách bảo mật</a></li>
+                                <li><a href="@Url.Action("Service", "Home")">Đăng ký thuê gia sư</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="connect-us col-lg-5 my-3 my-lg-0 text-lg-right">
+                            <div class="h5 mb-3">Kết nối với chúng tôi</div>
+                            <div class="fb_item fb_item-blue mt-4 mt-lg-1">
+                                <div class="fb_item-title">Dành cho khách hàng:</div>
+                                <div class="fb_item-ct">
+                                    <a href="https://www.facebook.com/ducthang3010" rel="nofollow" target="_blank">
+                                        <span class="icon icon-facebook"></span>
+                                        <span>PBL3 Education</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="fb_item fb_item-green mt-3">
+                                <div class="fb_item-title">Dành cho gia sư:</div>
+                                <div class="fb_item-ct fb_item-ct-2">
+                                    <a href="https://www.facebook.com/ducthang3010" rel="nofollow" target="_blank">
+                                        <span class="icon icon-facebook"></span>
+                                        <span class="ml-1">Gia Sư PBL3</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="google_business mt-4 mt-lg-3 d-flex">
+                                <div class="google_business-title">Google Business:</div>
+                                <div class="google_business-ct">
+                                    <a href="https://goo.gl/maps/Jx1fqArZDkTkjvZXA" rel="nofollow" target="_blank">
+                                        <span>Trung Tâm Gia Sư PBL3</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div><!-- End Row -->
+                </div><!-- End Grid -->
+            </div><!-- End my-primary-section -->
+
+            <div class="footer-secondary-section py-3 py-lg-2 copyright">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-lg-8">
+
+                            <span class="mr-2">Copyright © 2022 by nhóm 7 lớp PBL3 20Nh10b. All rights reserved.</span>
+
+                        </div>
+                        <div class="col-lg-4 mt-3 mt-lg-0 pb-2 pb-lg-0 text-lg-right">
+
+                            <span>Powered by</span>
+                            <a href="http://dut.udn.vn" class="text-accent-cool font-weight-bold" target="_blank">DHBK-DHDN</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <div class="container-fluid text-primary text-center py-3">
+            Thiết kế bởi Thắng tay to
+            <p>© 2022 - My ASP.NET Application</p>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+</body>
+</html>
