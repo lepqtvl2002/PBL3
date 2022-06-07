@@ -127,5 +127,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.tutorId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
 </p>

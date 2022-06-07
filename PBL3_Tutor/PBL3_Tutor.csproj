@@ -139,6 +139,7 @@
     <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
     <Compile Include="Areas\Admin\Controllers\StudentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TutorsController.cs" />
+    <Compile Include="Areas\Staffs\Controllers\AccountsController.cs" />
     <Compile Include="Areas\Staffs\Controllers\AuthController.cs" />
     <Compile Include="Areas\Staffs\Controllers\BaseController.cs" />
     <Compile Include="Areas\Staffs\Controllers\ClassesController.cs" />
@@ -864,6 +865,11 @@
     <Content Include="Areas\Tutors\Views\TutorAccount\Index.cshtml" />
     <Content Include="Areas\Staffs\Views\Classes\Empty.cshtml" />
     <Content Include="Areas\Staffs\Views\Classes\Register.cshtml" />
+    <Content Include="Areas\Staffs\Views\Accounts\Delete.cshtml" />
+    <Content Include="Areas\Staffs\Views\Accounts\Details.cshtml" />
+    <Content Include="Areas\Staffs\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\Staffs\Views\Accounts\Index.cshtml" />
+    <Content Include="Areas\Staffs\Views\Dashboard\Error_404.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -896,6 +902,7 @@
     <Content Include="Views\Blog\StudentBlog.cshtml" />
     <Content Include="Views\Blog\ParentBlog.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

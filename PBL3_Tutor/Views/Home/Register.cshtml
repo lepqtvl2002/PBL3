@@ -2,37 +2,16 @@
 @{
     ViewBag.Title = "Register";
 }
+<br/>
+<div class="container bg-light" style="width:620px;">
 
-<h2 class="text-white">Form đăng ký</h2>
+    <h1 class="mb-4">Đăng ký thuê gia sư</h1>
 
-<div class="container bg-light">
-    <div class="order_box px-lg-5 pt-lg-4 pb-lg-5">
-
-        <h1 class="mb-4 title-underline">Đăng ký thuê gia sư</h1>
-
-        <p class="mt-4 pt-1">Số điện thoại hỗ trợ: <a href="tel:+84902123456" class="px-1">0902-1234-56</a></p>
-
+    <p class="mt-4 pt-1">Số điện thoại hỗ trợ: <a href="tel:+84902123456" class="px-1">0902-1234-56</a></p>
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+    {
         <form id="form_order" action="/orders" method="POST" novalidate="">
-            <input type="hidden" name="_token" value="009rTx2NKnqyTXaoclmxWj33KVUofjAf7Li3wz2H">
-            <input type="hidden" name="service" value="1">
-
-            <div class="mt-4">
-
-                <div class="form-check form-check-radio mr-4">
-                    <span>Anh</span>
-                    <input type="radio" name="gender" value="1">
-                    <span class="checkmark"></span>
-                </div>
-
-                <div class="form-check form-check-radio">
-                    <span>Chị</span>
-                    <input type="radio" name="gender" value="2">
-                    <span class="checkmark"></span>
-                </div>
-
-            </div>
-
-            <div class="form-row">
+            <div class="row">
                 <div class="col-lg-6 form-group">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên" required="" value="">
                     <div class="invalid-feedback">Họ và tên là bắt buộc.</div>
@@ -43,27 +22,26 @@
                 </div>
             </div><!--End Row-->
 
-            <div class="form-row">
+            <div class="row">
                 <div class="col-lg-12 form-group  mt-lg-2">
                     <input type="text" class="form-control" name="address" placeholder="Số nhà, tên đường" value="">
                 </div>
 
                 <div class="col-lg-12 form-group mt-lg-2">
-                    <input type="text" class="form-control" name="message" placeholder="Ghi chú (không bắt buộc)" value="" autocomplete="off">
+                    <input type="text" class="form-control" name="note" placeholder="Ghi chú (không bắt buộc)" value="" autocomplete="off">
                 </div>
             </div><!--End Row-->
 
-            <div class="text-right">
+            <div class="text-md-end">
                 <input type="submit" class="btn btn-primary px-5 mt-3 font-weight-bold" value="Đăng Ký Ngay">
             </div>
 
         </form>
+    }
 
-        <div class="mt-4 pt-2 text-justify">
-            <hr>
-            <p class="mb-0">Sau khi bạn đăng ký, chúng tôi sẽ gọi lại cho bạn để trao đổi thêm những thông tin cần thiết khác. Tất cả thông tin của bạn sẽ được bảo mật.</p>
-        </div>
-
+    <div class="text-center">
+        <hr />
+        <p class="mb-0">Sau khi bạn đăng ký, chúng tôi sẽ gọi lại cho bạn để trao đổi thêm những thông tin cần thiết khác. Tất cả thông tin của bạn sẽ được bảo mật.</p>
     </div>
 </div>
-<hr />
+<br/>

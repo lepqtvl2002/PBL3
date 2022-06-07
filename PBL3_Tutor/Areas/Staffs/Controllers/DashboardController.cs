@@ -29,5 +29,9 @@ namespace PBL3_Tutor.Areas.Staffs.Controllers
         {
             return View();
         }
+        public ActionResult Error_404()
+        {
+            return View();
+        }
     }
 }

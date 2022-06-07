@@ -33,7 +33,7 @@ namespace PBL3_Tutor.Areas.Staffs.Controllers
                     Session["StaffEmail"] = user.email;
                     Session["StaffPassword"] = user.Account.password;
                     Session["StaffPhone"] = user.phonenumber;
-                    return RedirectToAction("Index", "Classes");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
