@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<PBL3_Tutor.Models.Class>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Fillter";
     Layout = "~/Areas/Tutors/Views/Shared/_LayoutTutor.cshtml";
 }
-<h2 class="text-white">Danh sách các lớp mới</h2>
+
+<h2 class="text-white">Các lớp được tìm thấy</h2>
 
 <div class="container bg-light">
     <p>
@@ -157,11 +158,11 @@
                 </div>
                 <button class="btn btn-outline-success col-2" type="submit">Tiến hành lọc</button>
             </div>
-            
+
         </form>
     }
 
-    <hr/>
+    <hr />
     <div class="row g-2">
         @foreach (var item in Model)
         {

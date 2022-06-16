@@ -870,6 +870,7 @@
     <Content Include="Areas\Staffs\Views\Accounts\Edit.cshtml" />
     <Content Include="Areas\Staffs\Views\Accounts\Index.cshtml" />
     <Content Include="Areas\Staffs\Views\Dashboard\Error_404.cshtml" />
+    <Content Include="Areas\Tutors\Views\Classes\Filter.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

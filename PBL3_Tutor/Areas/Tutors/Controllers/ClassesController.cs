@@ -134,5 +134,104 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
             var classes = db.Classes.Where(p => p.fee == 0);
             return View(classes.ToList());
         }
+        [HttpPost]
+        public ActionResult Filter(FormCollection collection)
+        {
+            var classes = new List<Class>();
+            if (collection["fs[]"] != null)
+            {
+                string subjects = collection["fs[]"].ToString();
+                classes.AddRange(db.Classes.Where(p => subjects.Contains(p.Student.subject)).ToList());
+            }
+
+            if (collection["fc[]"] != null)
+            {
+                string grades = collection["fc[]"].ToString();
+                if (grades.Contains("Mần non"))
+                {
+                    var list = db.Classes.Where(p => p.Student.grade == "Mần non").ToList();
+                    foreach(Class i in list)
+                    {
+                        if (!classes.Contains(i))
+                        {
+                            classes.Add(i);
+                        }
+                    }
+                }
+                if (grades.Contains("Tiểu học"))
+                {
+                    var list = db.Classes.Where(p => "1, 2, 3, 4, 5".Contains(p.Student.grade)).ToList();
+                    foreach (Class i in list)
+                    {
+                        if (!classes.Contains(i))
+                        {
+                            classes.Add(i);
+                        }
+                    }
+                }
+                if (grades.Contains("THCS"))
+                {
+                    var list = db.Classes.Where(p => "6, 7, 8, 9".Contains(p.Student.grade)).ToList();
+                    foreach (Class i in list)
+                    {
+                        if (!classes.Contains(i))
+                        {
+                            classes.Add(i);
+                        }
+                    }
+                }
+                if (grades.Contains("THPT"))
+                {
+                    var list = db.Classes.Where(p => p.Student.grade == "10" || p.Student.grade == "11" || p.Student.grade == "12").ToList();
+                    foreach (Class i in list)
+                    {
+                        if (!classes.Contains(i))
+                        {
+                            classes.Add(i);
+                        }
+                    }
+                }
+                if (grades.Contains("Người đi làm"))
+                {
+                    var list = db.Classes.Where(p => p.Student.grade == "Người đi làm").ToList();
+                    foreach (Class i in list)
+                    {
+                        if (!classes.Contains(i))
+                        {
+                            classes.Add(i);
+                        }
+                    }
+                }
+            }
+            if (collection["fy[]"] != null)
+            {
+                string requirements = collection["fy[]"].ToString();
+                var list = db.Classes.Where(p => p.Student.requirement.Contains(requirements)).ToList();
+                foreach (Class i in list)
+                {
+                    if (!classes.Contains(i))
+                    {
+                        classes.Add(i);
+                    }
+                }
+            }
+            if (collection["fk[]"] != null)
+            {
+                var areas = collection["fk[]"].ToString();
+                string[] locations = areas.Split();
+                foreach(string s in locations)
+                {
+                    var list = db.Classes.Where(p => p.Student.requirement.Contains(s)).ToList();
+                    foreach (Class i in list)
+                    {
+                        if (!classes.Contains(i))
+                        {
+                            classes.Add(i);
+                        }
+                    }
+                }
+            }
+            return View(classes);
+        }
     }
 }

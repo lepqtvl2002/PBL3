@@ -7,19 +7,19 @@
 
 <br/>
 
-<div class="container bg-light">
+<div class="container bg-light" style="width:400px;">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4 class="text-success">Đăng ký tài khoản gia sư</h4>
+        <h3 class="text-success text-center">Đăng ký tài khoản gia sư</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <p class="login-box-msg">@Html.Raw(ViewBag.Error)</p>
         <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12 text-center">
                 @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12">
                 @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12">
                 @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
@@ -44,7 +44,7 @@
 
         @using (Html.BeginForm("Create", "Tutors", FormMethod.Post))
         {
-            @Html.LabelFor(model => model.Account.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Account.password, htmlAttributes: new { @class = "control-label col-md-12" })
             <form action="#" method="post">
                 <div class="input-group mb-3">
                     <input type="password" name="password" required class="form-control" placeholder="Password">
@@ -56,7 +56,7 @@
         <p class="mt-4 mb-0 text-small text-muted">Bằng cách tạo tài khoản, bạn đồng ý với <a href="https://www.growgreen.edu.vn/user-policy" target="_blank">Điều khoản sử dụng</a></p>
         <br />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-12">
+            <div class="col-md-offset-2 col-md-12 text-center">
                 <input type="submit" value="Tạo tài khoản" class="btn btn-default btn-success" />
                 -hoặc-
                 <a class="btn btn-primary" href="~/Tutors/login" role="button">Đăng nhập</a>
