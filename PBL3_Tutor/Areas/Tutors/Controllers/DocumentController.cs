@@ -25,6 +25,10 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         {
             return View();
         }
+        public ActionResult Privacy()
+        {
+            return View();
+        }
         public ActionResult FeeDebt()
         {
             return View();
