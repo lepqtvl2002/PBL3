@@ -49,6 +49,10 @@
             @(item.state == true?"Đã có gia sư":"Đang còn")
         </td>
         <td>
+            @if (item.state != true)
+            {
+                @Html.ActionLink("Register", "Register", new { id = item.classId }) <a>|</a>
+            }
             @Html.ActionLink("Edit", "Edit", new { id = item.classId }) |
             @Html.ActionLink("Details", "Details", new { id = item.classId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.classId })

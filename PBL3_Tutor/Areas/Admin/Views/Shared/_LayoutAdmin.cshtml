@@ -10,7 +10,7 @@
     <meta name="description"
           content="Pixel Admin is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Admin</title>
+    <title>Admin | @ViewBag.Title</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/pixel-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16"
@@ -62,7 +62,7 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right pull-right">
                 <li>
-                    <a class="profile-pic" href="@Url.Action("Profile","Dashboard")">
+                    <a class="profile-pic" href="@Url.Action("Profile","Dashboard", new {id = Convert.ToInt64(Session["AdminId"])})">
                         <img src="~/Public/plugins/images/users/varun.jpg" alt="user-img"
                              width="36" class="img-circle"><b class="hidden-xs">@Session["AdminName"]</b>
                     </a>
@@ -81,25 +81,25 @@
         <div class="sidebar-nav navbar-collapse slimscrollsidebar">
             <ul class="nav" id="side-menu">
                 <li style="padding: 10px 0 0;">
-                    <a href="@Url.Action("Index","Dashboard")" class="wave-effect">
+                    <a href="@Url.Action("Index","Dashboard")" class="waves-effect">
                         <i class="fa fa-columns fa-fw"
                            aria-hidden="true"></i><span class="hide-menu">Trang chính</span>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Dashboard","Dashboard")" class="waves-effect">
+                    <a href="@Url.Action("Dashboard","Dashboard")" class="waves-effect active">
                         <i class="fa fa-clock-o fa-fw"
                            aria-hidden="true"></i><span class="hide-menu">Bảng điều khiển</span>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Table","Dashboard")" class="waves-effect">
+                    <a href="@Url.Action("Table","Dashboard")" class="waves-effect active">
                         <i class="fa fa-table fa-fw"
                            aria-hidden="true"></i><span class="hide-menu">Thành viên hệ thống</span>
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Map","Dashboard")" class="waves-effect">
+                    <a href="@Url.Action("Map","Dashboard")" class="waves-effect active">
                         <i class="fa fa-globe fa-fw"
                            aria-hidden="true"></i><span class="hide-menu">Google Map</span>
                     </a>

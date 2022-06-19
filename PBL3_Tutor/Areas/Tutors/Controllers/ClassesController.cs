@@ -17,17 +17,13 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         // GET: Tutors/Classes
         public ActionResult Index()
         {
-            var classes = db.Classes.Include(p => p.Student);
+            var classes = db.Classes.Include(p => p.Student).Where(p => p.state != true);
             return View(classes.ToList());
         }
 
         // GET: Tutors/Classes/Details/5
         public ActionResult Details(long id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Session["ClassId"] = id;
             Class @class = db.Classes.Find(id);
             if (@class == null)
@@ -36,7 +32,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
             }
             return View(@class);
         }
-
+/*
         // GET: Tutors/Classes/Create
         public ActionResult Create()
         {
@@ -119,7 +115,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
             db.Classes.Remove(@class);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        }*/
 
         protected override void Dispose(bool disposing)
         {

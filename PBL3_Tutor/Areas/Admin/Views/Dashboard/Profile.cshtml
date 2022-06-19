@@ -1,4 +1,4 @@
-﻿
+﻿@model PBL3_Tutor.Models.Admin
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -15,8 +15,8 @@
                             <img src="~/Public/plugins/images/users/varun.jpg"
                                  class="thumb-lg img-circle" alt="img">
                         </a>
-                        <h4 class="text-white">@Session["AdminName"]</h4>
-                        <h5 class="text-white">@Session["AdminEmail"]</h5>
+                        <h4 class="text-white">@Model.name</h4>
+                        <h5 class="text-white">@Model.email</h5>
                     </div>
                 </div>
             </div>
@@ -38,44 +38,54 @@
     </div>
     <div class="col-md-8 col-xs-12">
         <div class="white-box">
-            <form class="form-horizontal form-material">
-                <div class="form-group">
-                    <label class="col-md-12">Full Name</label>
-                    <div class="col-md-12">
-                        <input type="text" placeholder="@Session["AdminName"]"
-                               class="form-control form-control-line">
+            @using (Html.BeginForm("Profile", "Dashboard", FormMethod.Post))
+            {
+                <form class="form-horizontal form-material">
+                    <div class="form-group">
+                        <label class="col-md-12">Admin ID</label>
+                        <div class="col-md-12">
+                            <input type="text" placeholder="@Model.adminId" name="id" value="@Model.adminId"
+                                   class="form-control form-control-line" readonly="">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="example-email" class="col-md-12">Email</label>
-                    <div class="col-md-12">
-                        <input type="email" placeholder="@Session["AdminEmail"]"
-                               class="form-control form-control-line" name="example-email"
-                               id="example-email">
+                    <div class="form-group">
+                        <label class="col-md-12">Full Name</label>
+                        <div class="col-md-12">
+                            <input type="text" placeholder="@Model.name" name="name" value="@Model.name"
+                                   class="form-control form-control-line">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12">Password</label>
-                    <div class="col-md-12">
-                        <input type="password" value="@Session["AdminPassword"]" class="form-control form-control-line">
+                    <div class="form-group">
+                        <label for="example-email" class="col-md-12">Email</label>
+                        <div class="col-md-12">
+                            <input type="email" placeholder="@Model.email" value="@Model.email"
+                                   class="form-control form-control-line" name="email"
+                                   id="example-email">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-12">Phone No</label>
-                    <div class="col-md-12">
-                        <input type="text" placeholder="@Session["AdminPhone"]"
-                               class="form-control form-control-line">
+                    <div class="form-group">
+                        <label class="col-md-12">Password</label>
+                        <div class="col-md-12">
+                            <input type="password" value="@Model.Account.password" name="password" class="form-control form-control-line">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-6">
-                        <button class="btn btn-success">Update Profile</button>
+                    <div class="form-group">
+                        <label class="col-md-12">Phone No</label>
+                        <div class="col-md-12">
+                            <input type="text" placeholder="@Model.phonenumber" name="phonenumber" value="@Model.phonenumber"
+                                   class="form-control form-control-line">
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <a class="btn btn-primary pull-right" href="@Url.Action("Logout", "Auth")" role="button">Đăng xuất</a>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <button class="btn btn-success">Update Profile</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <a class="btn btn-primary pull-right" href="@Url.Action("Logout", "Auth")" role="button">Đăng xuất</a>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            }
         </div>
     </div>
 </div>

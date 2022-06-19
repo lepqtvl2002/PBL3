@@ -22,13 +22,9 @@ namespace PBL3_Tutor.Areas.Staffs.Controllers
         }
 
         // GET: Staffs/Registrations/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(long classId, long tutorId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Registration registration = db.Registrations.Find(id);
+            Registration registration = db.Registrations.Where(p => p.classId == classId && p.tutorId == tutorId).FirstOrDefault();
             if (registration == null)
             {
                 return HttpNotFound();
@@ -64,13 +60,10 @@ namespace PBL3_Tutor.Areas.Staffs.Controllers
         }
 
         // GET: Staffs/Registrations/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(long classId, long tutorId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Registration registration = db.Registrations.Find(id);
+            Registration registration = db.Registrations.Where(p => p.classId == classId && p.tutorId == tutorId).FirstOrDefault();
+
             if (registration == null)
             {
                 return HttpNotFound();
@@ -99,13 +92,10 @@ namespace PBL3_Tutor.Areas.Staffs.Controllers
         }
 
         // GET: Staffs/Registrations/Delete/5
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(long classId, long tutorId)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Registration registration = db.Registrations.Find(id);
+            Registration registration = db.Registrations.Where(p => p.classId == classId && p.tutorId == tutorId).FirstOrDefault();
+
             if (registration == null)
             {
                 return HttpNotFound();
@@ -116,9 +106,9 @@ namespace PBL3_Tutor.Areas.Staffs.Controllers
         // POST: Staffs/Registrations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(long classId, long tutorId)
         {
-            Registration registration = db.Registrations.Find(id);
+            Registration registration = db.Registrations.Where(p => p.classId == classId && p.tutorId == tutorId).FirstOrDefault();
             db.Registrations.Remove(registration);
             db.SaveChanges();
             return RedirectToAction("Index");

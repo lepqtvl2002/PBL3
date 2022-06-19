@@ -42,6 +42,9 @@ namespace PBL3_Tutor
             Session["TutorPhone"] = "";
             Session["TutorPassword"] = "";
             // More
+            Session["Customers"] = "";
+            Session["Tutors"] = "";
+            Session["Classes"] = "";
         }
     }
 }

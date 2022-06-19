@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Tutors/Views/Shared/_LayoutTutor.cshtml";
 }
-
+<br/>
 <div class="container  bg-light">
     <div class="card text-center">
         <div class="card-header">
@@ -34,7 +34,10 @@
                         <td>
                             <a class="btn btn-primary" href="~/Tutors/Classes/Details/@item.classId" role="button">Thông tin lớp</a>
                             <a class="btn btn-success" href="@Url.Action("Details", "Registrations", new { classId = item.classId })" role="button">Chi tiết</a>
-                            <a class="btn btn-danger" href="@Url.Action("Delete","Registrations", new { classId = item.classId })" role="button">Hủy đăng ký</a>
+                            @if (item.state != "Được chấp nhận")
+                            {
+                                <a class="btn btn-danger" href="@Url.Action("Delete","Registrations", new { classId = item.classId })" role="button">Hủy đăng ký</a>
+                            }
                         </td>
                     </tr>
                 }

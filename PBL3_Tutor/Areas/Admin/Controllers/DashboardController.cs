@@ -13,15 +13,43 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
+            Session["Customers"] = db.Students.Where(p => p.isConfirm != true).Count();
+            Session["Tutors"] = db.Tutors.Count();
+            Session["Classes"] = db.Classes.Where(p => p.state != true).Count();
             return View();
         }
         public ActionResult Dashboard()
         {
-            return View();
+            Session["Customers"] = db.Students.Where(p => p.isConfirm != true).Count();
+            Session["Tutors"] = db.Tutors.Count();
+            Session["Classes"] = db.Classes.Where(p => p.state != true).Count();
+            var list = db.Registrations.ToList();
+            return View(list);
         }
-        public ActionResult Profile()
+        public ActionResult Profile(long id)
         {
-            return View();
+            var ad = db.Admins.Find(id);
+            return View(ad);
+        }
+        [HttpPost]
+        public new ActionResult Profile(FormCollection collection)
+        {
+            if (collection == null)
+            {
+                return View("Error_404");
+            }
+            else
+            {
+                var ad = db.Admins.Find(Convert.ToInt32(collection["id"]));
+                ad.name = collection["name"];
+                ad.email = collection["email"];
+                ad.phonenumber = collection["phonenumber"];
+                ad.Account.password = collection["password"];
+                Session["AdminName"] = ad.name;
+                Session["AdminEmail"] = ad.email;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Profile", "Dashboard", new {id = collection["id"] });
         }
         public ActionResult Table()
         {

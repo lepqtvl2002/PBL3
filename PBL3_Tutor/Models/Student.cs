@@ -48,7 +48,7 @@ namespace PBL3_Tutor.Models
         public string school { get; set; }
         [Display(Name ="Yêu cầu")]
         public string requirement { get; set; }
-        [Display(Name ="Thông tin bổ xung")]
+        [Display(Name ="Thông tin bổ sung")]
         public string note { get; set; }
         [Display(Name ="Thời gian có thể học")]
         public string freeTime { get; set; }

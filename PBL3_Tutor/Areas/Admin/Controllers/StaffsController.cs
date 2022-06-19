@@ -39,7 +39,7 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Staffs/Create
         public ActionResult Create()
         {
-            ViewBag.username = new SelectList(db.Accounts, "username", "password");
+            ViewBag.Error = "";
             return View();
         }
 
@@ -48,16 +48,28 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "staffId,name,gender,username,email,phonenumber,address")] Staff staff)
+        public ActionResult Create([Bind(Include = "staffId,name,gender,username,email,phonenumber,address")] Staff staff, FormCollection collection)
         {
             if (ModelState.IsValid)
             {
-                db.Staffs.Add(staff);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Account account = new Account();
+                account.username = staff.username;
+                account.password = collection["password"];
+                account.roleId = 2;
+                if (db.Accounts.Find(staff.username) == null)
+                {
+                    db.Accounts.Add(account);
+                    db.Staffs.Add(staff);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Error = "<div class='text-danger'>Tên tài khoản đã tồn tại</div>";
+                    return View(staff);
+                }
             }
 
-            ViewBag.username = new SelectList(db.Accounts, "username", "password", staff.username);
             return View(staff);
         }
 
