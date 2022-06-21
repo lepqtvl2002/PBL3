@@ -49,9 +49,14 @@
             @Html.DisplayFor(modelItem => item.note)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.studentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.studentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.studentId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.studentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.studentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.studentId })
+            @if (item.isConfirm != true)
+            {
+                <a>|</a>
+                @Html.ActionLink("Create Class", "CreateClass", new { id = item.studentId })
+            }
         </td>
     </tr>
 }

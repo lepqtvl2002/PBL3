@@ -156,7 +156,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
                 }
                 if (grades.Contains("Tiểu học"))
                 {
-                    var list = db.Classes.Where(p => "1, 2, 3, 4, 5".Contains(p.Student.grade)).ToList();
+                    var list = db.Classes.Where(p => "1, 2, 3, 4, 5, Tiểu học".Contains(p.Student.grade)).ToList();
                     foreach (Class i in list)
                     {
                         if (!classes.Contains(i))
@@ -167,7 +167,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
                 }
                 if (grades.Contains("THCS"))
                 {
-                    var list = db.Classes.Where(p => "6, 7, 8, 9".Contains(p.Student.grade)).ToList();
+                    var list = db.Classes.Where(p => "6, 7, 8, 9, THCS".Contains(p.Student.grade)).ToList();
                     foreach (Class i in list)
                     {
                         if (!classes.Contains(i))

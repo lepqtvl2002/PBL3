@@ -17,6 +17,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         // GET: Tutors/Registrations
         public ActionResult Index()
         {
+            ViewBag.Notification = "";
             long tutorId = Convert.ToInt64(Session["TutorId"].ToString());
             var registrations = db.Registrations.Include(r => r.Class).Include(r => r.Tutor).Where(p => p.tutorId == tutorId);
             return View(registrations.ToList());
@@ -37,18 +38,37 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         // GET: Tutors/Registrations/Create
         public ActionResult Create(long classId)
         {
-            Registration registration = new Registration();
+            ViewBag.Notification = "";
             long tutorId = Convert.ToInt32(Session["TutorId"].ToString());
-            var registed = db.Registrations.Where(p => p.classId == classId && p.tutorId == tutorId).FirstOrDefault();
-            if (registed == null)
+            Tutor tutor = db.Tutors.Find(tutorId);
+            if (tutor.gender == null || tutor.name == null || tutor.phonenumber == null
+                || tutor.email == null || tutor.yearOfBirth == null || tutor.university == null
+                || tutor.subject == null || tutor.grade == null || tutor.address == null)
             {
-                registration.classId = classId;
-                registration.tutorId = tutorId;
-                registration.state = "Chờ xét duyệt";
-                db.Registrations.Add(registration);
-                db.SaveChanges();
+                ViewBag.Notification = "Thông tin của bạn chưa đáp ứng được yêu cầu, hãy bổ sung thêm thông tin";
             }
-            return RedirectToAction("Index", "Registrations");
+            else
+            {
+                Registration registration = new Registration();
+                Registration registed = db.Registrations.Where(p => p.tutorId == tutorId && p.classId == classId).FirstOrDefault(); 
+                if (registed == null)
+                {
+                    registration.classId = classId;
+                    registration.tutorId = tutorId;
+                    registration.state = "Chờ xét duyệt";
+                    db.Registrations.Add(registration);
+                    db.SaveChanges();
+                    ViewBag.Notification = "Đăng ký nhận lớp có mã số " + registration.classId + " thành công! " +
+                        "Hãy chờ đợi, nếu hồ sơ đạt yêu cầu, chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất.";
+                }
+                else
+                {
+                    ViewBag.Notification = "Bạn đã đăng ký nhận lớp " + registration.classId + " trước đây rồi!";
+                    ViewBag.Notification = "<div class=\"text-danger\">Tài khoản không tồn tại</div>";
+                }
+            }
+            
+            return RedirectToAction("Index");
         }
 
         // GET: Tutors/Registrations/Delete/5

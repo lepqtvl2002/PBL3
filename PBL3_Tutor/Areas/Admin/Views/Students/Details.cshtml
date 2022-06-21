@@ -119,6 +119,10 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.studentId }) |
-    @Html.ActionLink("Back to List", "Index") | 
-    @Html.ActionLink("Create Class", "CreateClass", new { id = Model.studentId})
+    @Html.ActionLink("Back to List", "Index") |
+    @if (Model.isConfirm != true)
+    {
+        <a>|</a>
+        @Html.ActionLink("Create Class", "CreateClass", new { id = Model.studentId })
+    }
 </p>

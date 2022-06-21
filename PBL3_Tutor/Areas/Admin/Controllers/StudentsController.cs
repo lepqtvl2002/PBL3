@@ -129,10 +129,18 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         }
         public ActionResult CreateClass(long id)
         {
+            ViewBag.Error = "";
             Class classes = new Class();
             classes.studentId = id;
             SelectList listStudent = new SelectList(db.Students, "studentId", "name", "studentId", id);
             ViewBag.studentId = listStudent;
+            Student student = db.Students.Find(id);
+            if (student.gender == null || student.address == null || student.subject == null
+                || student.phonenumber == null || student.grade == null || student.requirement == null
+                || student.paymentAmount == null)
+            {
+                ViewBag.Error = "Chưa đủ thông tin để yêu cầu để tạo lớp.";
+            }
             return View(classes);
         }
         [HttpPost]

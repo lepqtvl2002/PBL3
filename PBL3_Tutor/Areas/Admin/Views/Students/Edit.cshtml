@@ -123,7 +123,7 @@
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.DropDownList("isConfirm", new List<SelectListItem>{
-                        new SelectListItem { Text = "Đã tạo lớp", Value = "true", Selected=true},
+                        new SelectListItem { Text = "Đã tạo lớp", Value = "true"},
                         new SelectListItem { Text = "Chưa tạo lớp", Value = "false"},
                     })
                     @Html.ValidationMessageFor(model => model.isConfirm, "", new { @class = "text-danger" })

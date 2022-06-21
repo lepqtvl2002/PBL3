@@ -51,6 +51,7 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Classes/Create
         public ActionResult Create()
         {
+            ViewBag.Error = "";
             ViewBag.studentId = new SelectList(db.Students, "studentId", "name", "studentId", 1);
             return View();
         }
