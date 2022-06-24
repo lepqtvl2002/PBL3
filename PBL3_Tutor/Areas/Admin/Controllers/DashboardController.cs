@@ -26,10 +26,9 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
             var list = db.Registrations.ToList();
             return View(list);
         }
-        public ActionResult Profile(long id)
+        public ActionResult Profile()
         {
-            var ad = db.Admins.Find(id);
-            return View(ad);
+            return View();
         }
         [HttpPost]
         public new ActionResult Profile(FormCollection collection)
@@ -40,16 +39,37 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
             }
             else
             {
-                var ad = db.Admins.Find(Convert.ToInt32(collection["id"]));
-                ad.name = collection["name"];
-                ad.email = collection["email"];
-                ad.phonenumber = collection["phonenumber"];
-                ad.Account.password = collection["password"];
-                Session["AdminName"] = ad.name;
-                Session["AdminEmail"] = ad.email;
-                db.SaveChanges();
+                if (Session["Role"] == "Admin")
+                {
+                    var ad = db.Admins.Find(Convert.ToInt32(collection["id"]));
+                    ad.name = collection["name"];
+                    ad.email = collection["email"];
+                    ad.phonenumber = collection["phonenumber"];
+                    ad.Account.password = collection["password"];
+
+                    Session["Name"] = ad.name;
+                    Session["Email"] = ad.email;
+                    Session["Password"] = ad.Account.password;
+                    Session["PhoneNumber"] = ad.phonenumber;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    var staff = db.Staffs.Find(Convert.ToInt32(collection["id"]));
+                    staff.name = collection["name"];
+                    staff.email = collection["email"];
+                    staff.phonenumber = collection["phonenumber"];
+                    staff.Account.password = collection["password"];
+                    
+                    Session["Name"] = collection["name"];
+                    Session["Email"] = collection["email"];
+                    Session["Password"] = collection["password"];
+                    Session["PhoneNumber"] = collection["phonenumber"];
+                    
+                }
+                
             }
-            return RedirectToAction("Profile", "Dashboard", new {id = collection["id"] });
+            return RedirectToAction("Profile", "Dashboard");
         }
         public ActionResult Table()
         {

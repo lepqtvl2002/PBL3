@@ -62,9 +62,9 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right pull-right">
                 <li>
-                    <a class="profile-pic" href="@Url.Action("Profile","Dashboard", new {id = Convert.ToInt64(Session["AdminId"])})">
+                    <a class="profile-pic" href="@Url.Action("Profile","Dashboard")">
                         <img src="~/Public/plugins/images/users/varun.jpg" alt="user-img"
-                             width="36" class="img-circle"><b class="hidden-xs">@Session["AdminName"]</b>
+                             width="36" class="img-circle"><b class="hidden-xs">@Session["Name"]</b>
                     </a>
                 </li>
                 <li>

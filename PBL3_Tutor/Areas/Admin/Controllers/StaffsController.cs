@@ -12,6 +12,13 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
 {
     public class StaffsController : BaseController
     {
+        public StaffsController()
+        {
+            if (System.Web.HttpContext.Current.Session["Role"].Equals("Staff"))
+            {
+                System.Web.HttpContext.Current.Response.Redirect("~/Admin/Dashboard/Error_404");
+            }
+        }
         private DBModelContext db = new DBModelContext();
 
         // GET: Admin/Staffs

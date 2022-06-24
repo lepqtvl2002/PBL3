@@ -27,22 +27,47 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
             {
                 if (user.Account.password.Equals(password))
                 {
-                    Session["AdminUsername"] = username;
-                    Session["AdminId"] = user.adminId.ToString();
-                    Session["AdminName"] = user.name;
-                    Session["AdminEmail"] = user.email;
-                    Session["AdminPassword"] = user.Account.password;
-                    Session["AdminPhone"] = user.phonenumber;
+                    Session["Username"] = username;
+                    Session["Id"] = user.adminId.ToString();
+                    Session["Name"] = user.name;
+                    Session["Email"] = user.email;
+                    Session["Password"] = password;
+                    Session["PhoneNumber"] = user.phonenumber;
+                    Session["Role"] = "Admin";
                     return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {
+                    
                     ViewBag.Error = "<div class='text-danger'>Mật khẩu không chính xác</div>";
                 }
             }
             else
             {
-                ViewBag.Error = "<div class='text-danger'>Tài khoản không tồn tại</div>";
+                var userStaff = db.Staffs.Where(p => p.username == username).FirstOrDefault();
+                if (userStaff == null)
+                {
+                    ViewBag.Error = "<div class='text-danger'>Tài khoản không tồn tại</div>";
+                }
+                else
+                {
+                    if (userStaff.Account.password.Equals(password))
+                    {
+                        Session["Username"] = username;
+                        Session["Id"] = userStaff.staffId.ToString();
+                        Session["Name"] = userStaff.name;
+                        Session["Email"] = userStaff.email;
+                        Session["Password"] = password;
+                        Session["PhoneNumber"] = userStaff.phonenumber;
+                        Session["Role"] = "Staff";
+                        return RedirectToAction("Index", "Dashboard");
+                    }
+                    else
+                    {
+
+                        ViewBag.Error = "<div class='text-danger'>Mật khẩu không chính xác</div>";
+                    }
+                }
             }
             return View("Login");
         }

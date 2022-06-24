@@ -100,19 +100,22 @@
 </div>
 <!-- /.row -->
 <div>
-    <a class="btn btn-warning" href="@Url.Action("Index", "Accounts")" role="button">Quản lý danh sách tài khoản</a>
-</div>
-<br />
-
-<div>
-    <a class="btn btn-instagram" href="@Url.Action("Index", "Staffs")" role="button">Quản lý nhân viên</a>
-</div>
-<br />
-
-<div>
     <a class="btn btn-info" href="@Url.Action("Index", "Registrations")" role="button">Danh sách đăng ký nhận lớp</a>
 </div>
 <br />
+
+@if (Session["Role"] == "Admin")
+{
+    <div>
+        <a class="btn btn-warning" href="@Url.Action("Index", "Accounts")" role="button">Quản lý danh sách tài khoản</a>
+    </div>
+    <br />
+
+    <div>
+        <a class="btn btn-instagram" href="@Url.Action("Index", "Staffs")" role="button">Quản lý nhân viên</a>
+    </div>
+    <br />
+}
 
 
 

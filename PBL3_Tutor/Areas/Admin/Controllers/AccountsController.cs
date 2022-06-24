@@ -13,10 +13,13 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
     public class AccountsController : BaseController
     {
         private DBModelContext db = new DBModelContext();
-
         // GET: Admin/Accounts
         public ActionResult Index()
         {
+            if (Session["Role"].Equals("Staff"))
+            {
+                return RedirectToAction("Error_404", "Dashboard");
+            }
             var accounts = db.Accounts.Include(a => a.Role);
             return View(accounts.ToList());
         }
@@ -24,6 +27,10 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Accounts/Details/5
         public ActionResult Details(string id)
         {
+            if (Session["Role"].Equals("Staff"))
+            {
+                return RedirectToAction("Error_404", "Dashboard");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +46,10 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Accounts/Create
         public ActionResult Create()
         {
+            if (Session["Role"].Equals("Staff"))
+            {
+                return RedirectToAction("Error_404", "Dashboard");
+            }
             ViewBag.roleId = new SelectList(db.Roles, "roleId", "rolename");
             return View();
         }
@@ -64,11 +75,19 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Accounts/Edit/5
         public ActionResult Edit(string id)
         {
+            Account account = db.Accounts.Find(id);
+            if (Session["Role"].Equals("Staff"))
+            {
+                if (!account.Role.rolename.Equals("Gia sư"))
+                {
+                    return RedirectToAction("Error_404", "Dashboard");
+                }              
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            
             if (account == null)
             {
                 return HttpNotFound();
@@ -97,6 +116,10 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
         // GET: Admin/Accounts/Delete/5
         public ActionResult Delete(string id)
         {
+            if (Session["Role"].Equals("Staff"))
+            {
+                return RedirectToAction("Error_404", "Dashboard");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

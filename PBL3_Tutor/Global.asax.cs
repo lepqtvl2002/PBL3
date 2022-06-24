@@ -19,13 +19,14 @@ namespace PBL3_Tutor
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
         protected void Session_Start()
-        {   // Admin
-            Session["AdminUsername"] = "";
-            Session["AdminId"] = "";
-            Session["AdminName"] = "";
-            Session["AdminEmail"] = "";
-            Session["AdminPhone"] = "";
-            Session["AdminPassword"] = "";
+        {   // Admin & Staff
+            Session["Username"] = "";
+            Session["Id"] = "";
+            Session["Name"] = "";
+            Session["Email"] = "";
+            Session["PhoneNumber"] = "";
+            Session["Password"] = "";
+            Session["Role"] = "";
             // Staff
             Session["StaffUsername"] = "";
             Session["StaffId"] = "";

@@ -8,10 +8,9 @@ namespace PBL3_Tutor.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Admin/Base
         public BaseController()
         {
-            if (System.Web.HttpContext.Current.Session["AdminUsername"].Equals(""))
+            if (System.Web.HttpContext.Current.Session["Username"].Equals(""))
             {
                 System.Web.HttpContext.Current.Response.Redirect("~/Admin/login");
             }
