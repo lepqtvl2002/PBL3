@@ -8,18 +8,176 @@
 <h2 class="text-white">Danh sách các lớp miễn phí nhận lớp</h2>
 
 <div class="container bg-light">
+    <p>
+        @Html.ActionLink("<<Tất cả các lớp mới>>", "Index")
+    </p>
 
     <!-- Fillter-->
+    @using (Html.BeginForm("Filter", "Classes", FormMethod.Post))
+    {
+        <form class="d-flex" role="search">
+            <div class="row">
+                <div class="dropdown col-2">
+                    <button class="btn btn-outline-secondary col-12 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Chọn môn học
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fs[]" value="Toán" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Toán</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fs[]" value="Văn" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Văn</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fs[]" value="Anh" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Anh</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fs[]" value="Remain" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Các môn khác</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
+                <div class="dropdown col-2">
+                    <button class="btn btn-outline-secondary col-12 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Chọn cấp học
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fc[]" value="Mần non" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Mần non</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fc[]" value="Tiểu học" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Tiểu học</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fc[]" value="THCS" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">THCS</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fc[]" value="THPT" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">THPT</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fc[]" value="Đại học" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Đại học</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fc[]" value="Người đi làm" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Người đi làm</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dropdown col-2">
+                    <button class="btn btn-outline-secondary col-12 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Chọn yêu cầu
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fy[]" value="Giáo viên" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Giáo viên</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fy[]" value="Sinh viên" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Sinh viên</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="dropdown col-3">
+                    <button class="btn btn-outline-secondary col-12 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Chọn khu vực
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Liên Chiểu" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Quận Liên Chiểu</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Thanh Khê" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Quận Thanh Khê</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Hải Châu" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Quận Hải Châu</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Sơn Trà" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Quận Sơn Trà</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Ngũ Hành Sơn" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Quận Ngũ Hành Sơn</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Cẩm Lệ" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Quận Cẩm Lệ</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="fk[]" value="Hòa Vang" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">Huyện Hòa Vang</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-outline-success col-2" type="submit">Tiến hành lọc</button>
+            </div>
+
+        </form>
+    }
+
+    <hr />
     <div class="row g-2">
         @foreach (var item in Model)
         {
             <div class="col-3">
-                <div class="p-3 border bg-light">
-                    <p class="text-primary">
+                <div class="p-3 border bg-white">
+                    <h4 class="text-primary">
                         Mã Lớp:
                         ML@(item.classId)
-                    </p>
+                    </h4>
                     <b>
                         @(item.Student.subject)
                         @(item.Student.grade)
@@ -41,7 +199,7 @@
                     </b>
                     <br />
                     <b>
-                        @Html.ActionLink("Chi tiết", "Details", new { id = item.classId })
+                        @Html.ActionLink("Chi tiết >>", "Details", new { id = item.classId }, new { @class = "btn btn-success text-white text-bold" })
                     </b>
                     <br />
                 </div>

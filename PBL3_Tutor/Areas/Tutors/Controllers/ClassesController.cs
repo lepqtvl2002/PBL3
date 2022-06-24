@@ -134,9 +134,15 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         public ActionResult Filter(FormCollection collection)
         {
             var classes = new List<Class>();
+            var list = new List<Class>();
             if (collection["fs[]"] != null)
             {
                 string subjects = collection["fs[]"].ToString();
+                if (subjects.Contains("Remain"))
+                {
+                    list = db.Classes.Where(p => !("Toán Văn Anh").Contains(p.Student.subject)).ToList();
+                    classes.AddRange(list);
+                }
                 classes.AddRange(db.Classes.Where(p => subjects.Contains(p.Student.subject)).ToList());
             }
 
@@ -145,89 +151,84 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
                 string grades = collection["fc[]"].ToString();
                 if (grades.Contains("Mần non"))
                 {
-                    var list = db.Classes.Where(p => p.Student.grade == "Mần non").ToList();
-                    foreach(Class i in list)
-                    {
-                        if (!classes.Contains(i))
-                        {
-                            classes.Add(i);
-                        }
-                    }
+                    list = db.Classes.Where(p => p.Student.grade == "Mần non").ToList();
+                    classes.AddRange(list);
                 }
                 if (grades.Contains("Tiểu học"))
                 {
-                    var list = db.Classes.Where(p => "1, 2, 3, 4, 5, Tiểu học".Contains(p.Student.grade)).ToList();
-                    foreach (Class i in list)
-                    {
-                        if (!classes.Contains(i))
-                        {
-                            classes.Add(i);
-                        }
-                    }
+                    list = db.Classes.Where(p => "1, 2, 3, 4, 5, Tiểu học".Contains(p.Student.grade)).ToList();
+                    classes.AddRange(list);
                 }
                 if (grades.Contains("THCS"))
                 {
-                    var list = db.Classes.Where(p => "6, 7, 8, 9, THCS".Contains(p.Student.grade)).ToList();
-                    foreach (Class i in list)
-                    {
-                        if (!classes.Contains(i))
-                        {
-                            classes.Add(i);
-                        }
-                    }
+                    list = db.Classes.Where(p => "6, 7, 8, 9, THCS".Contains(p.Student.grade)).ToList();
+                    classes.AddRange(list);
                 }
                 if (grades.Contains("THPT"))
                 {
-                    var list = db.Classes.Where(p => p.Student.grade == "10" || p.Student.grade == "11" || p.Student.grade == "12").ToList();
-                    foreach (Class i in list)
-                    {
-                        if (!classes.Contains(i))
-                        {
-                            classes.Add(i);
-                        }
-                    }
+                    list = db.Classes.Where(p => p.Student.grade == "10" || p.Student.grade == "11" || p.Student.grade == "12" || p.Student.grade == "THPT").ToList();
+                    classes.AddRange(list);
                 }
                 if (grades.Contains("Người đi làm"))
                 {
-                    var list = db.Classes.Where(p => p.Student.grade == "Người đi làm").ToList();
-                    foreach (Class i in list)
-                    {
-                        if (!classes.Contains(i))
-                        {
-                            classes.Add(i);
-                        }
-                    }
+                    list = db.Classes.Where(p => p.Student.grade == "Người đi làm").ToList();
+                    classes.AddRange(list);
                 }
             }
             if (collection["fy[]"] != null)
             {
                 string requirements = collection["fy[]"].ToString();
-                var list = db.Classes.Where(p => p.Student.requirement.Contains(requirements)).ToList();
-                foreach (Class i in list)
+                if (requirements.Contains("Giáo viên"))
                 {
-                    if (!classes.Contains(i))
-                    {
-                        classes.Add(i);
-                    }
+                    list = db.Classes.Where(p => p.Student.requirement.Contains("Giáo viên")).ToList();
+                    classes.AddRange(list);
+                }
+                if (requirements.Contains("Sinh viên"))
+                {
+                    list = db.Classes.Where(p => p.Student.requirement.Contains("Sinh viên")).ToList();
+                    classes.AddRange(list);
                 }
             }
             if (collection["fk[]"] != null)
             {
                 var areas = collection["fk[]"].ToString();
-                string[] locations = areas.Split();
-                foreach(string s in locations)
+                if (areas.Contains("Liên Chiểu"))
                 {
-                    var list = db.Classes.Where(p => p.Student.requirement.Contains(s)).ToList();
-                    foreach (Class i in list)
-                    {
-                        if (!classes.Contains(i))
-                        {
-                            classes.Add(i);
-                        }
-                    }
+                    list = db.Classes.Where(p => p.Student.address.Contains("Liên Chiểu")).ToList();
+                    classes.AddRange(list);
+                }
+                if (areas.Contains("Thanh Khê"))
+                {
+                    list = db.Classes.Where(p => p.Student.address.Contains("Thanh Khê")).ToList();
+                    classes.AddRange(list);
+                }
+                if (areas.Contains("Hải Châu"))
+                {
+                    list = db.Classes.Where(p => p.Student.address.Contains("Hải Châu")).ToList();
+                    classes.AddRange(list);
+                }
+                if (areas.Contains("Sơn Trà"))
+                {
+                    list = db.Classes.Where(p => p.Student.address.Contains("Sơn Trà")).ToList();
+                    classes.AddRange(list);
+                }
+                if (areas.Contains("Ngũ Hành Sơn"))
+                {
+                    list = db.Classes.Where(p => p.Student.address.Contains("Ngũ Hành Sơn")).ToList();
+                    classes.AddRange(list);
+                }
+                if (areas.Contains("Cẩm Lệ"))
+                {
+                    list = db.Classes.Where(p => p.Student.address.Contains("Cẩm Lệ")).ToList();
+                    classes.AddRange(list);
+                }
+                if (areas.Contains("Hòa Vang"))
+                {
+                    list = db.Classes.Where(p => p.Student.address.Contains("Hòa Vang")).ToList();
+                    classes.AddRange(list);
                 }
             }
-            return View(classes);
+            return View(classes.Distinct().OrderByDescending(p => p.classId));
         }
     }
 }
