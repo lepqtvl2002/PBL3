@@ -4,7 +4,6 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Tutors/Views/Shared/_LayoutTutor.cshtml";
 }
-
 <h2 class="text-white">Thông tin chi tiết lớp học:</h2>
 
 <div>
@@ -13,7 +12,7 @@
             <h3 class="text-primary">
                 Mã Lớp
                 <b class="text-success">
-                    ML@(Model.classId)
+                    @(Model.classId)
                 </b>
             </h3>
             <p>
@@ -64,9 +63,16 @@
         </p>
     </div>
 </div>
+
+<b class="text-black"> @Html.Raw(ViewBag.Notification)</b>
+<br />
+
 <p>
     <div class="d-grid gap-2 d-md-flex">
         <a class="btn btn-success" href="@Url.Action("Index", "Classes")" role="button">Trở lại danh sách</a>
-        <a class="btn btn-primary" href="@Url.Action("Create", "Registrations", new {classId = Model.classId})" role="button">Đăng ký nhận lớp</a>
+        @if (ViewBag.Notification == "")
+        {
+            <a class="btn btn-primary" href="@Url.Action("Create", "Registrations", new {classId = Model.classId})" role="button">Đăng ký nhận lớp</a>
+        }
     </div>
 </p>

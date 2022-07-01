@@ -17,6 +17,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         // GET: Tutors/Classes
         public ActionResult Index()
         {
+            ViewBag.Notification = "";
             var classes = db.Classes.Include(p => p.Student).Where(p => p.state != true);
             return View(classes.ToList());
         }
@@ -24,7 +25,31 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         // GET: Tutors/Classes/Details/5
         public ActionResult Details(long id)
         {
-            Session["ClassId"] = id;
+            ViewBag.Notification = "";
+            if (Session["TutorId"].Equals(""))
+            {
+                ViewBag.Notification = "Bạn hãy đăng nhập để có thể đăng ký nhận lớp";
+            }
+            else
+            {
+                long tutorId = Convert.ToInt64(Session["TutorId"].ToString());
+                var registed = db.Registrations.Where(p => p.tutorId == tutorId && p.classId == id).FirstOrDefault();
+                if (registed != null)
+                {
+                    ViewBag.Notification = "Bạn đã đăng ký nhận lớp này trước đây!";
+                }
+                else
+                {
+                    var tutor = db.Tutors.Find(tutorId);
+                    if (tutor.gender == null || tutor.name == null || tutor.phonenumber == null
+                    || tutor.email == null || tutor.yearOfBirth == null || tutor.university == null
+                    || tutor.subject == null || tutor.grade == null || tutor.address == null)
+                    {
+                        ViewBag.Notification = "Thông tin của bạn chưa đáp ứng được yêu cầu, hãy bổ sung thêm thông tin";                        
+                    }
+                }
+                
+            }
             Class @class = db.Classes.Find(id);
             if (@class == null)
             {

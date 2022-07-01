@@ -27,13 +27,6 @@ namespace PBL3_Tutor
             Session["PhoneNumber"] = "";
             Session["Password"] = "";
             Session["Role"] = "";
-            // Staff
-            Session["StaffUsername"] = "";
-            Session["StaffId"] = "";
-            Session["StaffName"] = "";
-            Session["StaffEmail"] = "";
-            Session["StaffPhone"] = "";
-            Session["StaffPassword"] = "";
             // Tutor
             Session["TutorUsername"] = "";
             Session["TutorId"] = "";

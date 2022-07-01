@@ -3,10 +3,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Tutors/Views/Shared/_LayoutTutor.cshtml";
 }
-<hr/>
+<br/>
 <div class="container-fluid bg-light">
 
-    <h2>Đang có lớp mới cho bạn nhận lớp đây!!!</h2>
+    <h1 class="text-success">Có rất nhiều lớp mới phù hợp với bạn tại đây!!!</h1>
     <p>
         @Html.ActionLink("Tất cả các lớp mới >>", "Index", "Classes") |
         @Html.ActionLink("Lớp miễn phí nhận lớp >>", "FreeClasses", "Classes")
@@ -174,7 +174,7 @@
             <img src="https://i.pinimg.com/564x/d2/01/e1/d201e19b50cdcc61ac6f997fe66fd6ce.jpg" />
         </div>
         <div class="col-8">
-            <h2 class="text-primary">Hãy đến với chúng tôi để nâng cao kinh nghiệm giảng dạy và kiếm thêm thu nhập ^^</h2>
+            <h2 class="text-primary">Hãy đến với chúng tôi để nâng cao kinh nghiệm giảng dạy và kiếm thêm thu nhập</h2>
             <a class="btn btn-outline-success" href="@Url.Action("Index","Classes")">Xem danh sách lớp mới</a>
         </div>
     </div>
