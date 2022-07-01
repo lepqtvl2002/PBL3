@@ -152,7 +152,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
         }
         public ActionResult FreeClasses()
         {
-            var classes = db.Classes.Where(p => p.fee == 0);
+            var classes = db.Classes.Where(p => p.fee == 0 && p.state != true);
             return View(classes.ToList());
         }
         [HttpPost]
@@ -168,7 +168,21 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
                     list = db.Classes.Where(p => !("Toán Văn Anh").Contains(p.Student.subject)).ToList();
                     classes.AddRange(list);
                 }
-                classes.AddRange(db.Classes.Where(p => subjects.Contains(p.Student.subject)).ToList());
+                if (subjects.Contains("Toán"))
+                {
+                    list = db.Classes.Where(p => p.Student.subject.Contains("Toán")).ToList();
+                    classes.AddRange(list);
+                }
+                if (subjects.Contains("Văn"))
+                {
+                    list = db.Classes.Where(p => p.Student.subject.Contains("Văn")).ToList();
+                    classes.AddRange(list);
+                }
+                if (subjects.Contains("Anh"))
+                {
+                    list = db.Classes.Where(p => p.Student.subject.Contains("Anh")).ToList();
+                    classes.AddRange(list);
+                }
             }
 
             if (collection["fc[]"] != null)
@@ -253,7 +267,7 @@ namespace PBL3_Tutor.Areas.Tutors.Controllers
                     classes.AddRange(list);
                 }
             }
-            return View(classes.Distinct().OrderByDescending(p => p.classId));
+            return View(classes.Where(p => p.state != true).Distinct().OrderByDescending(p => p.classId));
         }
     }
 }

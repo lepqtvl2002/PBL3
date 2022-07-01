@@ -824,7 +824,6 @@
     <Content Include="Areas\Admin\Views\Students\CreateClass.cshtml" />
     <Content Include="Areas\Tutors\Views\Registrations\Details.cshtml" />
     <Content Include="Areas\Tutors\Views\Registrations\Delete.cshtml" />
-    <Content Include="Areas\Tutors\Views\TutorAccount\Create.cshtml" />
     <Content Include="Areas\Tutors\Views\RegisterAccount\Create.cshtml" />
     <Content Include="Areas\Tutors\Views\TutorAccount\Edit.cshtml" />
     <Content Include="Areas\Tutors\Views\TutorAccount\ChangeThePassword.cshtml" />
